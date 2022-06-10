@@ -1,5 +1,5 @@
 # Finite State Machine
-Written by [cryphowns]
+Written by cryphowns
 This machine data model does not support extended state nor parallel state capabilities.. yet.
 
 ## Format
@@ -16,7 +16,6 @@ Every Transition array you pass must be a hash table
 ## Usage
 
  local stateModule = PathToStateMachine
-	
 	local myStates = {
 		["Walking"] = { 
 			["Stop"] = "Idle";
