@@ -15,7 +15,7 @@ Every Transition array you pass must be a hash table
 
 ## Usage
 
- local stateModule = PathToStateMachine
+	
 	local myStates = {
 		["Walking"] = { 
 			["Stop"] = "Idle";
@@ -32,7 +32,7 @@ Every Transition array you pass must be a hash table
 		}
 	}
 	
-	local machine = require("stateModule").new("Idle", myStates)
+	local machine = require("StateModule").new("Idle", myStates)
 	
 	machine:switch("Walk")
 	print(machine:getCurrentState()) --> "Walking"
