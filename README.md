@@ -1,5 +1,5 @@
 # Finite State Machine
-Written by cryphowns <glocation87@gmail.com>
+Written by cryphowns | <glocation87@gmail.com>
 
 This machine data model does not support extended state nor parallel state capabilities.. yet.
 
