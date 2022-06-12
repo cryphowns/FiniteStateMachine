@@ -4,8 +4,8 @@ Written by cryphowns | <glocation87@gmail.com>
 This machine data model does not support extended state nor parallel state capabilities.. yet.
 
 ## Format
-Every Transition array you pass must be a hash table
-    every array element in the hash table represents a state, and its elements are events that point to other states
+Every Transition array you pass must be a hash table.
+    Every array element in the hash table represents a state, and its elements are events that point to other states.
 
     StateTable = {
         ["State1"] = {
