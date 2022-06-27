@@ -84,10 +84,15 @@ function machine.new(initialState, transitionArray)
 	--[[ Initialize Events ]]
     self.eventCache = {};
     self.event = Instance.new("BindableEvent");
-	self.OnStateChanged = {};
+	self.OnStateChanged = { -- make references 
+		event = self.event;
+		eventCache = self.eventCache;
+	};
 	
 	--[[ Initialize Event Listener ]]
     function self.OnStateChanged:Connect(callback)
+		print(self.event)
+		for i,v in pairs(self) do print(i,v) end
         self.eventCache["EventListener"] = self.event.Event:Connect(function(identifier, oldState, newState)
             if identifier == "OnStateChanged" then
                 return callback(oldState, newState);
@@ -119,7 +124,6 @@ function machine:transition(eventName)
 		return newSub:getCurrentState();
 	end
 	
-	print(self:getCurrentState());
 	return self.transitions[self:getCurrentState()][eventName];
 end
 
