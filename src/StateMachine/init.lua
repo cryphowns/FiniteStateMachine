@@ -58,7 +58,7 @@
 ]]
 
 --[[ Dependencies ]]
-local ParallelMachine = require(script:WaitForChild("ParallelMachine"));
+
 --[[ Module ]]
 local machine = {};
 
@@ -119,7 +119,8 @@ function machine:transition(eventName)
 		return newSub:getCurrentState();
 	end
 	
-	return self.transitionsArray[self:getCUrrentState()][eventName];
+	print(self:getCurrentState());
+	return self.transitions[self:getCurrentState()][eventName];
 end
 
 function machine:unRegister()
@@ -134,7 +135,7 @@ end
 function machine:switch(eventName, callback)
 	local newState = self:transition(eventName);
 	assert(newState, "There was an invalid transition from <"..self:getCurrentState().."> to <"..eventName..">");
-	if self:getCurrentSub() and self.transitionsArray[newState] then
+	if self:getCurrentSub() and self.transitions[newState] then
 		self:unRegister();
 	end
 	
@@ -168,4 +169,7 @@ end
 
 --[[Return Logic]]
 machine.__index = machine;
+machine.__call = function(t, ...)
+	t:switch(...);
+end
 return machine;
