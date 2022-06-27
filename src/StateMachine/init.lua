@@ -91,8 +91,6 @@ function machine.new(initialState, transitionArray)
 	
 	--[[ Initialize Event Listener ]]
     function self.OnStateChanged:Connect(callback)
-		print(self.event)
-		for i,v in pairs(self) do print(i,v) end
         self.eventCache["EventListener"] = self.event.Event:Connect(function(identifier, oldState, newState)
             if identifier == "OnStateChanged" then
                 return callback(oldState, newState);
